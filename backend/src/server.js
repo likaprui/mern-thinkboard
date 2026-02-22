@@ -1,7 +1,7 @@
 import express from "express"
 // const express = require("express")
 import cors from "cors"
-import dotenv from "dotenv"
+// import dotenv from "dotenv"
 import path from "path"
 
 import notesRoutes from "./routes/notesRoutes.js"
@@ -9,7 +9,7 @@ import { connectDB } from "./config/db.js"
 import rateLimiter from "./middleware/rateLimiter.js"
 
 
-dotenv.config();
+// dotenv.config();
 
 
 const app = express()
@@ -44,9 +44,10 @@ if(process.env.NODE_ENV === "production"){
 }
 
 
-connectDB(()=>{
-    app.listen(PORT, ()=>{
-    console.log("Server started on PORT: 5001", PORT)})
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log("Server started on PORT:", PORT)
+    })
 })
 
 
