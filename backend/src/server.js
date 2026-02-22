@@ -9,8 +9,8 @@ import { connectDB } from "./config/db.js"
 import rateLimiter from "./middleware/rateLimiter.js"
 
 
-// dotenv.config();
-connectDB();
+dotenv.config();
+
 
 const app = express()
 const PORT = process.env.PORT || 5001
@@ -44,9 +44,10 @@ if(process.env.NODE_ENV === "production"){
 }
 
 
-
-app.listen(5001, ()=>{
-console.log("Server started on PORT: 5001", PORT)})
+connectDB(()=>{
+    app.listen(5001, ()=>{
+    console.log("Server started on PORT: 5001", PORT)})
+})
 
 
 // mongodb+srv://pruidzelika7_db_user:sVOJPgM5Ud6a9msN@cluster0.5z0bx26.mongodb.net/?appName=Cluster0

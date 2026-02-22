@@ -9,3 +9,5 @@ export const connectDB = async()=>{
         console.error("Err", error)
     }
 }
+
+// mongodb+srv://thinkboard_user:overthinker@cluster0.ykmnze3.mongodb.net/?appName=Cluster0
